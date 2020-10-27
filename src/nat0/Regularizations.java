@@ -12,7 +12,16 @@ class L1 implements RegularizationFunction {
   }
 }
 
+class L2 implements RegularizationFunction {
+  public double output(double weight) {
+    return 0.5 * weight * weight;
+  }
+  public double der(double weight) {
+    return weight;
+  }
+}
+
 public class Regularizations {
   public static RegularizationFunction L1 = new L1();
-  // TODO: L2
+  public static RegularizationFunction L2 = new L2();
 }
