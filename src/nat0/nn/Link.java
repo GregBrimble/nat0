@@ -1,4 +1,4 @@
-package nat0;
+package nat0.nn;
 
 import java.util.Random;
 

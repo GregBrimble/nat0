@@ -1,7 +1,6 @@
-package nat0;
+package nat0.nn;
 
 import java.lang.Math;
-import nat0.ActivationFunction;
 
 class TANH implements ActivationFunction {
   public double output(double input) {

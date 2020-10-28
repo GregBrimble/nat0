@@ -1,10 +1,6 @@
-package nat0;
+package nat0.nn;
 
 import java.util.ArrayList;
-import nat0.Node;
-import nat0.Activations;
-import nat0.Regularizations;
-import nat0.ErrorFunction;
 
 public class NN {
   public ArrayList<ArrayList<Node>> network = new ArrayList<ArrayList<Node>>();

@@ -1,4 +1,4 @@
-package nat0;
+package nat0.nn;
 
 interface RegularizationFunction {
   public double output(double weight);

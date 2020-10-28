@@ -1,7 +1,6 @@
-package nat0;
+package nat0.nn;
 
 import java.lang.Math;
-import nat0.RegularizationFunction;
 
 class L1 implements RegularizationFunction {
   public double output(double weight) {

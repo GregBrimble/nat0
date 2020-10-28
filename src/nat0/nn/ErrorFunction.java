@@ -1,4 +1,4 @@
-package nat0;
+package nat0.nn;
 
 interface ErrorFunction {
   public double error(double output, double target);

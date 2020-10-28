@@ -1,7 +1,6 @@
-package nat0;
+package nat0.nn;
 
 import java.lang.Math;
-import nat0.ErrorFunction;
 
 class SQUARE implements ErrorFunction {
   public double error(double output, double target) {
