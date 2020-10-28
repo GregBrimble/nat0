@@ -74,3 +74,7 @@ Temporary Items
 # End of https://www.toptal.com/developers/gitignore/api/java,vscode,visualstudiocode,macos
 
 bin/
+
+### IntelliJ IDEA ###
+.idea/
+*.iml

@@ -1,8 +1,6 @@
-package nat0;
+package nat0.nn;
 
 import java.util.ArrayList;
-import nat0.ActivationFunction;
-import nat0.Link;
 
 public class Node {
   String id;
