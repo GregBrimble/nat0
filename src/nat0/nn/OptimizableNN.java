@@ -26,7 +26,16 @@ public class OptimizableNN implements Optimizable {
         }
       }
     }
-    throw new UnsupportedOperationException();
+    double sse = 0.0;
+    for (TrainingPoint point : trainingPoints) {
+      nn.forwardProp(point.inputs.values);
+      ArrayList<Double> outputs = new ArrayList<>();
+      for (Node node : nn.network.get(nn.network.size() - 1))
+        outputs.add(node.output);
+      NumberVector error = new NumberVector(outputs).subtract(point.outputs);
+      sse += error.dot(error);
+    }
+    return sse / trainingPoints.size();
   }
 
   @Override
