@@ -26,15 +26,38 @@ public class Main {
         perceptron, TrainingPoint.makeGaussianDataset(new Random(), 50, 2.0, 0.5));
     ParticleSwarmOptimizer pso = new ParticleSwarmOptimizer(
         optimizable, 0.7, 2.0, 2.0);
-    pso.initParticles(20);
+    pso.initParticles(10);
     for (int i = 0; i < 10; i++) {
       pso.update();
       System.out.println(pso.getGlobalBestCost());
     }
   }
 
+  void optimizeNN() {
+    if (args.length == 0) {
+      System.out.println("No layer widths given");
+      return;
+    }
+    String[] widthParams = args[0].split("-");
+    int[] widths = new int[widthParams.length];
+    for (int i = 0; i < widths.length; i++)
+      widths[i] = Integer.parseInt(widthParams[i]);
+    NN nn = new NN(widths, Activations.TANH, Activations.TANH, Regularizations.L1, new String[] {"x", "y"});
+    Optimizable optimizable = new OptimizableNN(nn,
+        TrainingPoint.makeSpiralDataset(new Random(), 50, 0.0));
+    ParticleSwarmOptimizer pso = new ParticleSwarmOptimizer(
+        optimizable, 0.7, 2.0, 2.0);
+    pso.initParticles(25);
+    for (int i = 0; i < 1000000; i++) {
+      pso.update();
+      if (i % 1000 == 0) {
+        System.out.printf("%8d: ", i);
+        System.out.println(pso.getGlobalBestCost());
+      }
+    }
+  }
+
   public static void main(String[] args) {
-    NN nn = new NN(new int[] {1, 2, 3, 1}, Activations.TANH, Activations.TANH, Regularizations.L1, new String[] {"test"});
     Main main = new Main(args);
     System.out.println("PRINT SPIRAL");
     System.out.println("------------");
@@ -42,5 +65,8 @@ public class Main {
     System.out.println("OPTIMIZE PERCEPTRON");
     System.out.println("-------------------");
     main.optimizePerceptron();
+    System.out.println("OPTIMIZE NN");
+    System.out.println("-----------");
+    main.optimizeNN();
   }
 }
