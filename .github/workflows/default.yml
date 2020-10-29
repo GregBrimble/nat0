@@ -1,8 +1,5 @@
 name: Compile and Run
-on:
-  push:
-    branches:
-      - master
+on: push
 
 jobs:
   compile_and_run:
