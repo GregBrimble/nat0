@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class NN {
   public ArrayList<ArrayList<Node>> network = new ArrayList<ArrayList<Node>>();
 
-  public double forwardProp(int[] inputs) {
+  public double forwardProp(double[] inputs) {
     ArrayList<Node> inputLayer = this.network.get(0);
     int numNodes = inputLayer.size();
     if (inputs.length != numNodes) {
