@@ -1,15 +1,15 @@
 package nat0;
 
-import nat0.math.Vector;
+import nat0.math.NumberVector;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class TrainingPoint {
-  public final Vector inputs, outputs;
+  public final NumberVector inputs, outputs;
 
-  TrainingPoint(Vector inputs, Vector outputs) {
+  TrainingPoint(NumberVector inputs, NumberVector outputs) {
     this.inputs = inputs;
     this.outputs = outputs;
   }
@@ -17,13 +17,13 @@ public class TrainingPoint {
   public static List<TrainingPoint> makeGaussianDataset(Random random, int count, double center, double sdev) {
     ArrayList<TrainingPoint> result = new ArrayList<>();
     for (int i = 0; i < count; i++) {
-      Vector input = new Vector(2),
-          output = new Vector(1);
-      output.get(0).value = i < count / 2 ? -1 : 1;
-      input.get(0).value = i < count / 2 ? -center : center;
-      input.get(1).value = input.get(0).value;
-      input.get(0).value += random.nextGaussian() * sdev;
-      input.get(1).value += random.nextGaussian() * sdev;
+      NumberVector input = new NumberVector(2),
+          output = new NumberVector(1);
+      output.values[0] = i < count / 2 ? -1 : 1;
+      input.values[0] = i < count / 2 ? -center : center;
+      input.values[1] = input.values[0];
+      input.values[0] += random.nextGaussian() * sdev;
+      input.values[1] += random.nextGaussian() * sdev;
       result.add(new TrainingPoint(input, output));
     }
     return result;

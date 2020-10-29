@@ -1,24 +1,24 @@
 package nat0.perceptron;
 
-import nat0.math.Vector;
+import nat0.math.NumberVector;
 
 public class Perceptron {
-  public final Vector weights;
+  public final NumberVector weights;
 
   public Perceptron(int inputCount) {
-    weights = new Vector(inputCount + 1);
+    weights = new NumberVector(inputCount + 1);
   }
 
-  public double sum(Vector input) {
+  public double sum(NumberVector input) {
     if (weights.size() != input.size() + 1)
       throw new IllegalArgumentException("Input of wrong size");
-    double result = weights.get(0).value;
+    double result = weights.values[0];
     for (int i = 0; i < input.size(); i++)
-      result += weights.get(i + 1).value * input.get(i).value;
+      result += weights.values[i + 1] * input.values[i];
     return result;
   }
 
-  public double predict(Vector input) {
+  public double predict(NumberVector input) {
     return Math.tanh(sum(input)); // sum(input) > 0.0 ? 1.0 : -1.0;
   }
 }
