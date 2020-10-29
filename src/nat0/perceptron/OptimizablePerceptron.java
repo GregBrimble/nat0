@@ -1,7 +1,7 @@
 package nat0.perceptron;
 
 import nat0.TrainingPoint;
-import nat0.math.Vector;
+import nat0.math.NumberVector;
 import nat0.pso.Optimizable;
 
 import java.util.List;
@@ -16,17 +16,17 @@ public class OptimizablePerceptron implements Optimizable {
   }
 
   @Override
-  public double cost(Vector state) {
+  public double cost(NumberVector state) {
     double sum = 0.0;
     perceptron.weights.set(state);
     for (TrainingPoint point : trainingPoints) {
-      sum += Math.abs(point.outputs.get(0).value - perceptron.predict(point.inputs));
+      sum += Math.abs(point.outputs.values[0] - perceptron.predict(point.inputs));
     }
     return sum / trainingPoints.size();
   }
 
   @Override
-  public Vector state() {
+  public NumberVector state() {
     return perceptron.weights;
   }
 }

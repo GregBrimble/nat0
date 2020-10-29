@@ -1,9 +1,9 @@
 package nat0.pso;
 
-import nat0.math.Vector;
+import nat0.math.NumberVector;
 
 public interface Optimizable {
-  double cost(Vector state);
+  double cost(NumberVector state);
 
-  Vector state();
+  NumberVector state();
 }
